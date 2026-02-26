@@ -8,7 +8,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-
 *{
 margin:0;
 padding:0;
@@ -23,7 +22,7 @@ color:white;
 overflow-x:hidden;
 }
 
-/* VIDEO HERO */
+/* HERO VIDEO */
 .hero{
 position:relative;
 height:100vh;
@@ -51,7 +50,7 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:linear-gradient(to bottom,rgba(0,0,0,0.6),rgba(0,0,0,0.85));
+background:linear-gradient(to bottom,rgba(0,0,0,0.6),rgba(0,0,0,0.9));
 z-index:-1;
 }
 
@@ -89,7 +88,7 @@ transition:0.4s;
 background:white;
 }
 
-/* IMAGE SECTIONS */
+/* IMAGE SECTION */
 .image-section{
 padding:80px 20px;
 text-align:center;
@@ -122,7 +121,7 @@ transition:0.4s;
 transform:scale(1.05);
 }
 
-/* GLASS CARD SECTION */
+/* GLASS SECTION */
 .section{
 padding:80px 20px;
 display:flex;
@@ -149,6 +148,31 @@ text-align:center;
 .card ul{
 line-height:1.8;
 font-size:17px;
+}
+
+/* LOCATION GRID */
+.location-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+margin-top:30px;
+}
+
+.loc-box{
+background:rgba(255,215,0,0.08);
+padding:25px;
+border-radius:15px;
+transition:0.4s;
+}
+
+.loc-box:hover{
+transform:translateY(-10px);
+background:rgba(255,215,0,0.18);
+}
+
+.loc-box h3{
+color:#ffd700;
+margin-bottom:15px;
 }
 
 /* SITE MAP */
@@ -210,6 +234,7 @@ z-index:5;
 .hero h1{font-size:34px}
 .hero p{font-size:16px}
 .image-grid img{height:200px}
+.card{padding:25px}
 }
 
 </style>
@@ -217,7 +242,7 @@ z-index:5;
 
 <body>
 
-<!-- HERO VIDEO -->
+<!-- HERO -->
 <section class="hero">
 <video autoplay muted loop id="bgVideo">
 <source src="background.mp4" type="video/mp4">
@@ -232,7 +257,7 @@ z-index:5;
 </div>
 </section>
 
-<!-- REAL ESTATE IMAGES -->
+<!-- PROJECT IMAGES -->
 <section class="image-section">
 <h2>🏡 Project View</h2>
 <div class="image-grid">
@@ -242,20 +267,52 @@ z-index:5;
 </div>
 </section>
 
-<!-- HIGHLIGHTS -->
+<!-- AMENITIES -->
 <section class="section">
 <div class="card">
-<h2>🏡 Project Highlights</h2>
+<h2>🏗 Amenities & Infrastructure</h2>
 <ul>
-<li>Phase 1 – 45 Sites</li>
-<li>Phase 2 – 120 Sites</li>
-<li>Phase 3 – 105 Sites</li>
-<li>40 & 33 Feet Tar Roads</li>
-<li>Gated Community with Entrance Arch</li>
-<li>Drinking & Bore Water</li>
-<li>Immediate EB Connection</li>
-<li>Street Lights & Landscaping</li>
+<li>DTCP & RERA Approved Layout</li>
+<li>40 & 33 Feet End-to-End Tar Roads</li>
+<li>Grand Entrance Arch</li>
+<li>Fully Gated Community</li>
+<li>Drinking Water & Bore Water Facility</li>
+<li>Overhead Water Tank</li>
+<li>Street Lights & EB Poles Installed</li>
+<li>Immediate EB Connection for Construction</li>
+<li>Green Landscaping with Trees & Plants</li>
 </ul>
+</div>
+</section>
+
+<!-- LOCATION ADVANTAGES -->
+<section class="section">
+<div class="card">
+<h2>📍 Prime Location Advantages</h2>
+
+<div class="location-grid">
+
+<div class="loc-box">
+<h3>🎓 Educational Institutions</h3>
+<p>Craya International, Ramakrishna Group, Kumaraguru Institutions, SNS Group, Adithya School & more nearby.</p>
+</div>
+
+<div class="loc-box">
+<h3>🏥 Banks & Hospitals</h3>
+<p>Leading banks, multi-speciality hospitals and supermarkets within close proximity.</p>
+</div>
+
+<div class="loc-box">
+<h3>🏭 Industrial Hubs</h3>
+<p>LMW, Roots, Texmo, Aquasub, Elgi, Sakthi Auto and other major industries nearby.</p>
+</div>
+
+<div class="loc-box">
+<h3>💻 IT Parks</h3>
+<p>KGISL Tech Park, KCP Tech Park, TCS, Bosch, Ford and other IT companies nearby.</p>
+</div>
+
+</div>
 </div>
 </section>
 
@@ -283,7 +340,6 @@ z-index:5;
 function toggleSound(){
 var video=document.getElementById("bgVideo");
 var btn=document.querySelector(".mute-btn");
-
 if(video.muted){
 video.muted=false;
 btn.innerHTML="Mute 🔇";
