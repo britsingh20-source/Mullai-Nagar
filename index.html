@@ -13,18 +13,29 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
+scroll-behavior:smooth;
 }
 
 body{
 font-family:'Poppins',sans-serif;
+background:#0a0a0a;
 color:white;
-background:black;
 overflow-x:hidden;
 }
 
-/* Background Video */
-video{
-position:fixed;
+/* VIDEO HERO */
+.hero{
+position:relative;
+height:100vh;
+overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+}
+
+.hero video{
+position:absolute;
 top:0;
 left:0;
 width:100%;
@@ -33,41 +44,32 @@ object-fit:cover;
 z-index:-2;
 }
 
-/* Dark Overlay */
-.overlay{
-position:fixed;
+.hero::after{
+content:"";
+position:absolute;
 top:0;
 left:0;
 width:100%;
 height:100%;
-background:linear-gradient(to bottom,rgba(0,0,0,0.8),rgba(0,0,0,0.9));
+background:linear-gradient(to bottom,rgba(0,0,0,0.6),rgba(0,0,0,0.85));
 z-index:-1;
 }
 
-/* Hero Section */
-.hero{
-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
+.hero-content{
+z-index:2;
+max-width:900px;
 padding:20px;
 }
 
 .hero h1{
 font-family:'Playfair Display',serif;
-font-size:58px;
+font-size:60px;
 color:#ffd700;
-animation:fadeIn 2s ease-in-out;
 }
 
 .hero p{
 margin-top:15px;
 font-size:20px;
-max-width:800px;
-line-height:1.6;
-animation:fadeIn 3s ease-in-out;
 }
 
 .btn{
@@ -87,16 +89,50 @@ transition:0.4s;
 background:white;
 }
 
-/* Section */
+/* IMAGE SECTIONS */
+.image-section{
+padding:80px 20px;
+text-align:center;
+background:#111;
+}
+
+.image-section h2{
+color:#ffd700;
+margin-bottom:40px;
+font-size:32px;
+}
+
+.image-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+max-width:1200px;
+margin:auto;
+}
+
+.image-grid img{
+width:100%;
+height:280px;
+object-fit:cover;
+border-radius:15px;
+transition:0.4s;
+}
+
+.image-grid img:hover{
+transform:scale(1.05);
+}
+
+/* GLASS CARD SECTION */
 .section{
 padding:80px 20px;
 display:flex;
 justify-content:center;
+background:#0f0f0f;
 }
 
 .card{
-background:rgba(255,255,255,0.08);
-backdrop-filter:blur(15px);
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(10px);
 padding:40px;
 border-radius:20px;
 max-width:1100px;
@@ -107,7 +143,6 @@ box-shadow:0 0 40px rgba(255,215,0,0.15);
 .card h2{
 color:#ffd700;
 margin-bottom:25px;
-font-size:32px;
 text-align:center;
 }
 
@@ -116,32 +151,14 @@ line-height:1.8;
 font-size:17px;
 }
 
-/* Location Grid */
-.location-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
-margin-top:30px;
-}
-
-.loc-box{
-background:rgba(255,215,0,0.08);
-padding:25px;
+/* SITE MAP */
+.sitemap img{
+width:100%;
 border-radius:15px;
-transition:0.4s;
+box-shadow:0 0 30px rgba(255,215,0,0.2);
 }
 
-.loc-box:hover{
-transform:translateY(-10px);
-background:rgba(255,215,0,0.18);
-}
-
-.loc-box h3{
-color:#ffd700;
-margin-bottom:15px;
-}
-
-/* Price Section */
+/* PRICE */
 .price{
 text-align:center;
 background:linear-gradient(45deg,#b8860b,#ffd700);
@@ -160,7 +177,7 @@ margin:10px 0;
 font-weight:600;
 }
 
-/* WhatsApp */
+/* WHATSAPP */
 .whatsapp{
 position:fixed;
 bottom:20px;
@@ -172,11 +189,12 @@ border-radius:50%;
 font-size:22px;
 text-decoration:none;
 box-shadow:0 0 20px rgba(0,0,0,0.4);
+z-index:10;
 }
 
-/* Mute Button */
+/* MUTE BUTTON */
 .mute-btn{
-position:fixed;
+position:absolute;
 top:20px;
 right:20px;
 background:#ffd700;
@@ -185,19 +203,13 @@ padding:10px 18px;
 border-radius:30px;
 font-weight:600;
 cursor:pointer;
-z-index:10;
-}
-
-/* Animation */
-@keyframes fadeIn{
-from{opacity:0;transform:translateY(20px)}
-to{opacity:1;transform:translateY(0)}
+z-index:5;
 }
 
 @media(max-width:768px){
 .hero h1{font-size:34px}
 .hero p{font-size:16px}
-.card{padding:25px}
+.image-grid img{height:200px}
 }
 
 </style>
@@ -205,26 +217,32 @@ to{opacity:1;transform:translateY(0)}
 
 <body>
 
-<!-- Background Video -->
+<!-- HERO VIDEO -->
+<section class="hero">
 <video autoplay muted loop id="bgVideo">
 <source src="background.mp4" type="video/mp4">
 </video>
 
-<div class="overlay"></div>
-
 <button class="mute-btn" onclick="toggleSound()">Unmute 🔊</button>
 
-<!-- Hero Section -->
-<section class="hero">
+<div class="hero-content">
 <h1>முல்லை நகர் – IDIKARAI</h1>
-<p>
-10 Acres Premium Gated Community | DTCP & RERA Approved |
-Modern Infrastructure with Complete Amenities
-</p>
+<p>10 Acres Premium Gated Community | DTCP & RERA Approved</p>
 <button class="btn">Book Your Site Now</button>
+</div>
 </section>
 
-<!-- Project Highlights -->
+<!-- REAL ESTATE IMAGES -->
+<section class="image-section">
+<h2>🏡 Project View</h2>
+<div class="image-grid">
+<img src="image1.jpg">
+<img src="image2.jpg">
+<img src="image3.jpg">
+</div>
+</section>
+
+<!-- HIGHLIGHTS -->
 <section class="section">
 <div class="card">
 <h2>🏡 Project Highlights</h2>
@@ -232,77 +250,34 @@ Modern Infrastructure with Complete Amenities
 <li>Phase 1 – 45 Sites</li>
 <li>Phase 2 – 120 Sites</li>
 <li>Phase 3 – 105 Sites</li>
-<li>40 & 33 Feet End-to-End Tar Roads</li>
-<li>Gated Community with Grand Entrance Arch</li>
-<li>Drinking Water & Bore Water Facility</li>
-<li>Overhead Water Tank</li>
-<li>Street Lights & EB Poles</li>
-<li>Immediate EB Connection for Houses</li>
-<li>Beautiful Landscaping & Tree Plantation</li>
+<li>40 & 33 Feet Tar Roads</li>
+<li>Gated Community with Entrance Arch</li>
+<li>Drinking & Bore Water</li>
+<li>Immediate EB Connection</li>
+<li>Street Lights & Landscaping</li>
 </ul>
 </div>
 </section>
 
-<!-- Location Advantages -->
+<!-- SITE MAP -->
 <section class="section">
-<div class="card">
-<h2>📍 Prime Location Advantages</h2>
-
-<div class="location-grid">
-
-<div class="loc-box">
-<h3>🎓 Educational Institutions</h3>
-<p>
-Craya International, Ramakrishna Group, Govt High School, 
-Ranganathar Group, Asian College, Adithya International School, 
-Chetiniya International School, GKD Institutions, 
-Einstein Institutions, Euro Kids, Kumaraguru Institutions, 
-SNS Group & more.
-</p>
-</div>
-
-<div class="loc-box">
-<h3>🏥 Banks, Hospitals & Markets</h3>
-<p>
-Leading national banks, multi-speciality hospitals, 
-medical shops and supermarkets are located very close 
-for your daily convenience.
-</p>
-</div>
-
-<div class="loc-box">
-<h3>🏭 Industrial Hubs</h3>
-<p>
-LMW, Indrola, Roots, Pricol, Veejay Lakshmi, 
-Sakthi Auto, Elgi, KG Groups, Texmo, Aquasub, 
-KSB Pumps and many other major industries nearby.
-</p>
-</div>
-
-<div class="loc-box">
-<h3>💻 IT & Corporate Parks</h3>
-<p>
-KGISL Tech Park, KCP Tech Park, Bosch, Ugam, 
-TCS, Ford and other multinational IT companies 
-within easy reach.
-</p>
-</div>
-
-</div>
+<div class="card sitemap">
+<h2>🗺 Site Layout Plan</h2>
+<img src="sitemap.jpg" alt="Site Map">
 </div>
 </section>
 
-<!-- Price Section -->
+<!-- PRICE -->
 <section class="price">
 <h2>🔥 Special Launch Price</h2>
 <p>South Facing – ₹11,49,999 / Cent</p>
 <p>North & East Facing – ₹11,99,999 / Cent</p>
-<p>HURRY! LIMITED SITES ONLY</p>
+<p>Limited Sites Only – Book Now</p>
 <button class="btn">Call Now</button>
 </section>
 
-<!-- WhatsApp -->
-<a href="https://wa.me/919000000000" class="whatsapp">💬</a>
+<!-- WHATSAPP -->
+<a href="https://wa.me/919148127587" class="whatsapp">💬</a>
 
 <script>
 function toggleSound(){
