@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mullai Nagar – IDIKARAI</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body,html{
+height:100%;
+overflow-x:hidden;
+color:white;
+}
+
+.video-container{
+position:fixed;
+right:0;
+bottom:0;
+min-width:100%;
+min-height:100%;
+z-index:-1;
+}
+
+.overlay{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.65);
+}
+
+.content{
+position:relative;
+z-index:2;
+padding:40px 20px;
+max-width:1200px;
+margin:auto;
+text-align:center;
+}
+
+h1{
+font-size:48px;
+font-weight:700;
+margin-bottom:15px;
+animation:fadeIn 2s ease-in-out;
+}
+
+.subtitle{
+font-size:22px;
+margin-bottom:30px;
+color:#ffd700;
+}
+
+.section{
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(10px);
+padding:25px;
+margin:20px 0;
+border-radius:15px;
+animation:fadeUp 1.5s ease-in-out;
+}
+
+.section ul{
+text-align:left;
+line-height:1.8;
+}
+
+.price-box{
+background:linear-gradient(45deg,#ff512f,#dd2476);
+padding:25px;
+border-radius:15px;
+margin-top:30px;
+}
+
+.price-box h2{
+margin-bottom:15px;
+}
+
+.cta{
+margin-top:25px;
+}
+
+.cta button{
+padding:15px 30px;
+font-size:18px;
+border:none;
+border-radius:30px;
+cursor:pointer;
+background:#ffd700;
+color:black;
+font-weight:600;
+transition:0.3s;
+}
+
+.cta button:hover{
+transform:scale(1.1);
+}
+
+.mute-btn{
+position:fixed;
+top:20px;
+right:20px;
+background:#ffd700;
+color:black;
+border:none;
+padding:10px 18px;
+border-radius:20px;
+cursor:pointer;
+font-weight:600;
+z-index:5;
+}
+
+@keyframes fadeIn{
+from{opacity:0}
+to{opacity:1}
+}
+
+@keyframes fadeUp{
+from{transform:translateY(40px);opacity:0}
+to{transform:translateY(0);opacity:1}
+}
+
+@media(max-width:768px){
+h1{font-size:30px}
+.subtitle{font-size:16px}
+}
+</style>
+</head>
+
+<body>
+
+<video autoplay muted loop id="bgVideo" class="video-container">
+<source src="background.mp4" type="video/mp4">
+</video>
+
+<div class="overlay"></div>
+
+<button class="mute-btn" onclick="toggleSound()">Unmute 🔊</button>
+
+<div class="content">
+
+<h1>முல்லை நகர் – IDIKARAI</h1>
+<p class="subtitle">10 ஏக்கர் பிரம்மாண்ட உதயம் | DTCP & RERA Approved</p>
+
+<div class="section">
+<h2>🏡 Project Details</h2>
+<p>PHASE 1 – 45 Sites | PHASE 2 – 120 Sites | PHASE 3 – 105 Sites</p>
+</div>
+
+<div class="section">
+<h2>📌 வசதிகள்</h2>
+<ul>
+<li>40 & 33 Feet End-to-End Tar Roads</li>
+<li>Gated Community with Entrance Arch</li>
+<li>Drinking Water & Bore Water</li>
+<li>Overhead Water Tank</li>
+<li>Street Lights & EB Poles</li>
+<li>Immediate EB Connection</li>
+<li>Green Landscaping with Trees</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>📍 Location Advantages</h2>
+<ul>
+<li>Near Leading Schools & Colleges</li>
+<li>Near Banks, Hospitals & Supermarkets</li>
+<li>Near Major Industries – LMW, Roots, Texmo</li>
+<li>Near IT Hubs – TCS, Bosch, KGISL Tech Park</li>
+</ul>
+</div>
+
+<div class="price-box">
+<h2>🔥 Special Launch Price</h2>
+<p>👉 South Facing – ₹11,49,999 / Per Cent</p>
+<p>👉 North & East Facing – ₹11,99,999 / Per Cent</p>
+<h3>HURRY! LIMITED SITES ONLY</h3>
+</div>
+
+<div class="cta">
+<button onclick="alert('Contact us for Booking Now!')">Book Now</button>
+</div>
+
+</div>
+
+<script>
+function toggleSound(){
+var video=document.getElementById("bgVideo");
+var btn=document.querySelector(".mute-btn");
+
+if(video.muted){
+video.muted=false;
+btn.innerHTML="Mute 🔇";
+}else{
+video.muted=true;
+btn.innerHTML="Unmute 🔊";
+}
+}
+</script>
+
+</body>
+</html>
