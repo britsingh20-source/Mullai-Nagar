@@ -22,15 +22,16 @@ color:white;
 overflow-x:hidden;
 }
 
-/* HERO VIDEO */
+/* HERO SECTION */
 .hero{
 position:relative;
 height:100vh;
-overflow:hidden;
 display:flex;
-justify-content:center;
 align-items:center;
+justify-content:center;
 text-align:center;
+overflow:hidden;
+background:url('fallback.jpg') center/cover no-repeat;
 }
 
 .hero video{
@@ -50,7 +51,7 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:linear-gradient(to bottom,rgba(0,0,0,0.6),rgba(0,0,0,0.9));
+background:linear-gradient(to bottom,rgba(0,0,0,0.6),rgba(0,0,0,0.85));
 z-index:-1;
 }
 
@@ -236,7 +237,6 @@ z-index:5;
 .image-grid img{height:200px}
 .card{padding:25px}
 }
-
 </style>
 </head>
 
@@ -244,7 +244,8 @@ z-index:5;
 
 <!-- HERO -->
 <section class="hero">
-<video autoplay muted loop id="bgVideo">
+
+<video id="bgVideo" autoplay muted loop playsinline preload="auto">
 <source src="background.mp4" type="video/mp4">
 </video>
 
@@ -255,6 +256,7 @@ z-index:5;
 <p>10 Acres Premium Gated Community | DTCP & RERA Approved</p>
 <button class="btn">Book Your Site Now</button>
 </div>
+
 </section>
 
 <!-- PROJECT IMAGES -->
@@ -279,39 +281,33 @@ z-index:5;
 <li>Drinking Water & Bore Water Facility</li>
 <li>Overhead Water Tank</li>
 <li>Street Lights & EB Poles Installed</li>
-<li>Immediate EB Connection for Construction</li>
-<li>Green Landscaping with Trees & Plants</li>
+<li>Immediate EB Connection</li>
+<li>Green Landscaping with Trees</li>
 </ul>
 </div>
 </section>
 
-<!-- LOCATION ADVANTAGES -->
+<!-- LOCATION -->
 <section class="section">
 <div class="card">
 <h2>📍 Prime Location Advantages</h2>
-
 <div class="location-grid">
-
 <div class="loc-box">
 <h3>🎓 Educational Institutions</h3>
 <p>Craya International, Ramakrishna Group, Kumaraguru Institutions, SNS Group, Adithya School & more nearby.</p>
 </div>
-
 <div class="loc-box">
 <h3>🏥 Banks & Hospitals</h3>
-<p>Leading banks, multi-speciality hospitals and supermarkets within close proximity.</p>
+<p>Leading banks, hospitals & supermarkets within close proximity.</p>
 </div>
-
 <div class="loc-box">
 <h3>🏭 Industrial Hubs</h3>
-<p>LMW, Roots, Texmo, Aquasub, Elgi, Sakthi Auto and other major industries nearby.</p>
+<p>LMW, Roots, Texmo, Aquasub, Elgi, Sakthi Auto & more nearby.</p>
 </div>
-
 <div class="loc-box">
 <h3>💻 IT Parks</h3>
-<p>KGISL Tech Park, KCP Tech Park, TCS, Bosch, Ford and other IT companies nearby.</p>
+<p>KGISL Tech Park, KCP Tech Park, TCS, Bosch, Ford & more nearby.</p>
 </div>
-
 </div>
 </div>
 </section>
@@ -337,9 +333,15 @@ z-index:5;
 <a href="https://wa.me/919148127587" class="whatsapp">💬</a>
 
 <script>
+document.addEventListener("DOMContentLoaded", function () {
+const video = document.getElementById("bgVideo");
+video.play().catch(e => console.log("Autoplay prevented"));
+});
+
 function toggleSound(){
 var video=document.getElementById("bgVideo");
 var btn=document.querySelector(".mute-btn");
+
 if(video.muted){
 video.muted=false;
 btn.innerHTML="Mute 🔇";
