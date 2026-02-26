@@ -17,12 +17,12 @@ scroll-behavior:smooth;
 
 body{
 font-family:'Poppins',sans-serif;
-background:#0a0a0a;
+background:#000;
 color:white;
 overflow-x:hidden;
 }
 
-/* HERO SECTION */
+/* HERO */
 .hero{
 position:relative;
 height:100vh;
@@ -31,29 +31,23 @@ align-items:center;
 justify-content:center;
 text-align:center;
 overflow:hidden;
-background:url('fallback.jpg') center/cover no-repeat;
 }
 
-/* VIDEO */
+/* VIDEO FIXED */
 .hero video{
 position:absolute;
-top:50%;
+top:40%;               /* MOVE VIDEO UP */
 left:50%;
 transform:translate(-50%, -50%);
-width:100%;
-height:100%;
-object-fit:cover; /* Desktop full screen */
+min-width:100%;
+min-height:100%;
+width:auto;
+height:auto;
+object-fit:cover;      /* ALWAYS FULL SCREEN */
 z-index:-2;
-background:black;
 }
 
-/* MOBILE - NO CROP */
-@media(max-width:768px){
-.hero video{
-object-fit:contain;
-}
-}
-
+/* Dark Overlay */
 .hero::after{
 content:"";
 position:absolute;
@@ -61,7 +55,7 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:linear-gradient(to bottom,rgba(0,0,0,0.6),rgba(0,0,0,0.85));
+background:linear-gradient(to bottom,rgba(0,0,0,0.6),rgba(0,0,0,0.9));
 z-index:-1;
 }
 
@@ -73,7 +67,7 @@ padding:20px;
 
 .hero h1{
 font-family:'Playfair Display',serif;
-font-size:60px;
+font-size:56px;
 color:#ffd700;
 }
 
@@ -161,7 +155,7 @@ line-height:1.8;
 font-size:17px;
 }
 
-/* LOCATION GRID */
+/* LOCATION */
 .location-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
@@ -297,48 +291,6 @@ z-index:5;
 </div>
 </section>
 
-<!-- LOCATION -->
-<section class="section">
-<div class="card">
-<h2>📍 Prime Location Advantages</h2>
-<div class="location-grid">
-<div class="loc-box">
-<h3>🎓 Educational Institutions</h3>
-<p>Craya International, Ramakrishna Group, Kumaraguru Institutions, SNS Group & more nearby.</p>
-</div>
-<div class="loc-box">
-<h3>🏥 Banks & Hospitals</h3>
-<p>Leading banks, hospitals & supermarkets within close proximity.</p>
-</div>
-<div class="loc-box">
-<h3>🏭 Industrial Hubs</h3>
-<p>LMW, Roots, Texmo, Aquasub, Elgi, Sakthi Auto & more nearby.</p>
-</div>
-<div class="loc-box">
-<h3>💻 IT Parks</h3>
-<p>KGISL Tech Park, KCP Tech Park, TCS, Bosch, Ford & more nearby.</p>
-</div>
-</div>
-</div>
-</section>
-
-<!-- SITE MAP -->
-<section class="section">
-<div class="card sitemap">
-<h2>🗺 Site Layout Plan</h2>
-<img src="sitemap.jpg" alt="Site Map">
-</div>
-</section>
-
-<!-- PRICE -->
-<section class="price">
-<h2>🔥 Special Launch Price</h2>
-<p>South Facing – ₹11,49,999 / Cent</p>
-<p>North & East Facing – ₹11,99,999 / Cent</p>
-<p>Limited Sites Only – Book Now</p>
-<button class="btn">Call Now</button>
-</section>
-
 <!-- WHATSAPP -->
 <a href="https://wa.me/919148127587" class="whatsapp">💬</a>
 
@@ -350,7 +302,7 @@ const hero = document.querySelector(".hero");
 
 video.play().catch(()=>{});
 
-/* Pause when scrolled away */
+/* Pause video when scrolling down */
 window.addEventListener("scroll", function() {
 const rect = hero.getBoundingClientRect();
 if(rect.bottom < window.innerHeight / 2){
