@@ -3,143 +3,183 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mullai Nagar – IDIKARAI</title>
+<title>Mullai Nagar | IDIKARAI</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
+
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
+}
+
+body{
 font-family:'Poppins',sans-serif;
-}
-
-body,html{
-height:100%;
-overflow-x:hidden;
 color:white;
+overflow-x:hidden;
+background:black;
 }
 
-.video-container{
+/* Background Video */
+video{
 position:fixed;
-right:0;
-bottom:0;
-min-width:100%;
-min-height:100%;
-z-index:-1;
-}
-
-.overlay{
-position:absolute;
 top:0;
 left:0;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.65);
+object-fit:cover;
+z-index:-2;
 }
 
-.content{
-position:relative;
-z-index:2;
-padding:40px 20px;
-max-width:1200px;
-margin:auto;
+/* Dark Luxury Overlay */
+.overlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:linear-gradient(to bottom,rgba(0,0,0,0.8),rgba(0,0,0,0.9));
+z-index:-1;
+}
+
+/* Hero Section */
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
 text-align:center;
+padding:20px;
 }
 
-h1{
-font-size:48px;
-font-weight:700;
-margin-bottom:15px;
+.hero h1{
+font-family:'Playfair Display',serif;
+font-size:60px;
+color:#ffd700;
 animation:fadeIn 2s ease-in-out;
 }
 
-.subtitle{
+.hero p{
+margin-top:15px;
 font-size:22px;
-margin-bottom:30px;
-color:#ffd700;
+max-width:800px;
+line-height:1.6;
+animation:fadeIn 3s ease-in-out;
 }
 
+/* Glass Card */
 .section{
-background:rgba(255,255,255,0.08);
-backdrop-filter:blur(10px);
-padding:25px;
-margin:20px 0;
-border-radius:15px;
-animation:fadeUp 1.5s ease-in-out;
+padding:80px 20px;
+display:flex;
+justify-content:center;
 }
 
-.section ul{
-text-align:left;
+.card{
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(15px);
+padding:40px;
+border-radius:20px;
+max-width:1000px;
+width:100%;
+box-shadow:0 0 40px rgba(255,215,0,0.15);
+}
+
+.card h2{
+color:#ffd700;
+margin-bottom:20px;
+font-size:32px;
+}
+
+.card ul{
 line-height:1.8;
 }
 
-.price-box{
-background:linear-gradient(45deg,#ff512f,#dd2476);
-padding:25px;
-border-radius:15px;
-margin-top:30px;
-}
-
-.price-box h2{
-margin-bottom:15px;
-}
-
-.cta{
-margin-top:25px;
-}
-
-.cta button{
-padding:15px 30px;
-font-size:18px;
-border:none;
-border-radius:30px;
-cursor:pointer;
-background:#ffd700;
+/* Price Section */
+.price{
+text-align:center;
+background:linear-gradient(45deg,#b8860b,#ffd700);
 color:black;
+padding:60px 20px;
+}
+
+.price h2{
+font-size:36px;
+margin-bottom:20px;
+}
+
+.price p{
+font-size:20px;
+margin:10px 0;
 font-weight:600;
-transition:0.3s;
 }
 
-.cta button:hover{
-transform:scale(1.1);
+/* Buttons */
+.btn{
+margin-top:25px;
+padding:15px 35px;
+border:none;
+border-radius:40px;
+font-size:18px;
+font-weight:600;
+cursor:pointer;
+background:black;
+color:#ffd700;
+transition:0.4s;
 }
 
+.btn:hover{
+background:white;
+color:black;
+}
+
+/* WhatsApp Button */
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+color:white;
+padding:15px 18px;
+border-radius:50%;
+font-size:22px;
+text-decoration:none;
+box-shadow:0 0 20px rgba(0,0,0,0.4);
+}
+
+/* Mute Button */
 .mute-btn{
 position:fixed;
 top:20px;
 right:20px;
 background:#ffd700;
-color:black;
 border:none;
 padding:10px 18px;
-border-radius:20px;
-cursor:pointer;
+border-radius:30px;
 font-weight:600;
-z-index:5;
+cursor:pointer;
 }
 
+/* Animation */
 @keyframes fadeIn{
-from{opacity:0}
-to{opacity:1}
-}
-
-@keyframes fadeUp{
-from{transform:translateY(40px);opacity:0}
-to{transform:translateY(0);opacity:1}
+from{opacity:0;transform:translateY(20px)}
+to{opacity:1;transform:translateY(0)}
 }
 
 @media(max-width:768px){
-h1{font-size:30px}
-.subtitle{font-size:16px}
+.hero h1{font-size:34px}
+.hero p{font-size:16px}
+.card{padding:25px}
 }
+
 </style>
 </head>
 
 <body>
 
-<video autoplay muted loop id="bgVideo" class="video-container">
+<video autoplay muted loop id="bgVideo">
 <source src="background.mp4" type="video/mp4">
 </video>
 
@@ -147,57 +187,41 @@ h1{font-size:30px}
 
 <button class="mute-btn" onclick="toggleSound()">Unmute 🔊</button>
 
-<div class="content">
-
+<section class="hero">
 <h1>முல்லை நகர் – IDIKARAI</h1>
-<p class="subtitle">10 ஏக்கர் பிரம்மாண்ட உதயம் | DTCP & RERA Approved</p>
+<p>10 Acres | DTCP & RERA Approved Premium Gated Community with Modern Infrastructure</p>
+<button class="btn">Book Your Site Now</button>
+</section>
 
-<div class="section">
-<h2>🏡 Project Details</h2>
-<p>PHASE 1 – 45 Sites | PHASE 2 – 120 Sites | PHASE 3 – 105 Sites</p>
-</div>
-
-<div class="section">
-<h2>📌 வசதிகள்</h2>
+<section class="section">
+<div class="card">
+<h2>🏡 Project Highlights</h2>
 <ul>
-<li>40 & 33 Feet End-to-End Tar Roads</li>
-<li>Gated Community with Entrance Arch</li>
+<li>Phase 1 – 45 Sites</li>
+<li>Phase 2 – 120 Sites</li>
+<li>Phase 3 – 105 Sites</li>
+<li>40 & 33 Ft End-to-End Tar Roads</li>
 <li>Drinking Water & Bore Water</li>
-<li>Overhead Water Tank</li>
-<li>Street Lights & EB Poles</li>
 <li>Immediate EB Connection</li>
-<li>Green Landscaping with Trees</li>
+<li>Street Lights & Landscaping</li>
 </ul>
 </div>
+</section>
 
-<div class="section">
-<h2>📍 Location Advantages</h2>
-<ul>
-<li>Near Leading Schools & Colleges</li>
-<li>Near Banks, Hospitals & Supermarkets</li>
-<li>Near Major Industries – LMW, Roots, Texmo</li>
-<li>Near IT Hubs – TCS, Bosch, KGISL Tech Park</li>
-</ul>
-</div>
-
-<div class="price-box">
+<section class="price">
 <h2>🔥 Special Launch Price</h2>
-<p>👉 South Facing – ₹11,49,999 / Per Cent</p>
-<p>👉 North & East Facing – ₹11,99,999 / Per Cent</p>
-<h3>HURRY! LIMITED SITES ONLY</h3>
-</div>
+<p>South Facing – ₹11,49,999 / Cent</p>
+<p>North & East Facing – ₹11,99,999 / Cent</p>
+<p>Hurry! Limited Sites Available</p>
+<button class="btn">Call Now</button>
+</section>
 
-<div class="cta">
-<button onclick="alert('Contact us for Booking Now!')">Book Now</button>
-</div>
-
-</div>
+<a href="https://wa.me/919000000000" class="whatsapp">💬</a>
 
 <script>
 function toggleSound(){
 var video=document.getElementById("bgVideo");
 var btn=document.querySelector(".mute-btn");
-
 if(video.muted){
 video.muted=false;
 btn.innerHTML="Mute 🔇";
