@@ -34,14 +34,24 @@ overflow:hidden;
 background:url('fallback.jpg') center/cover no-repeat;
 }
 
+/* VIDEO */
 .hero video{
 position:absolute;
-top:0;
-left:0;
+top:50%;
+left:50%;
+transform:translate(-50%, -50%);
 width:100%;
 height:100%;
-object-fit:cover;
+object-fit:cover; /* Desktop full screen */
 z-index:-2;
+background:black;
+}
+
+/* MOBILE - NO CROP */
+@media(max-width:768px){
+.hero video{
+object-fit:contain;
+}
 }
 
 .hero::after{
@@ -294,7 +304,7 @@ z-index:5;
 <div class="location-grid">
 <div class="loc-box">
 <h3>🎓 Educational Institutions</h3>
-<p>Craya International, Ramakrishna Group, Kumaraguru Institutions, SNS Group, Adithya School & more nearby.</p>
+<p>Craya International, Ramakrishna Group, Kumaraguru Institutions, SNS Group & more nearby.</p>
 </div>
 <div class="loc-box">
 <h3>🏥 Banks & Hospitals</h3>
@@ -334,8 +344,22 @@ z-index:5;
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
+
 const video = document.getElementById("bgVideo");
-video.play().catch(e => console.log("Autoplay prevented"));
+const hero = document.querySelector(".hero");
+
+video.play().catch(()=>{});
+
+/* Pause when scrolled away */
+window.addEventListener("scroll", function() {
+const rect = hero.getBoundingClientRect();
+if(rect.bottom < window.innerHeight / 2){
+video.pause();
+} else {
+video.play().catch(()=>{});
+}
+});
+
 });
 
 function toggleSound(){
