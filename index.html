@@ -33,21 +33,19 @@ text-align:center;
 overflow:hidden;
 }
 
-/* VIDEO FIXED */
+/* VIDEO FIX */
 .hero video{
 position:absolute;
-top:40%;               /* MOVE VIDEO UP */
+top:45%;   /* move slightly upward */
 left:50%;
 transform:translate(-50%, -50%);
-min-width:100%;
-min-height:100%;
-width:auto;
-height:auto;
-object-fit:cover;      /* ALWAYS FULL SCREEN */
+width:100%;
+height:100%;
+object-fit:cover;
 z-index:-2;
 }
 
-/* Dark Overlay */
+/* Overlay */
 .hero::after{
 content:"";
 position:absolute;
@@ -55,7 +53,7 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:linear-gradient(to bottom,rgba(0,0,0,0.6),rgba(0,0,0,0.9));
+background:linear-gradient(to bottom,rgba(0,0,0,0.5),rgba(0,0,0,0.9));
 z-index:-1;
 }
 
@@ -67,7 +65,7 @@ padding:20px;
 
 .hero h1{
 font-family:'Playfair Display',serif;
-font-size:56px;
+font-size:52px;
 color:#ffd700;
 }
 
@@ -77,7 +75,7 @@ font-size:20px;
 }
 
 .btn{
-margin-top:30px;
+margin-top:25px;
 padding:15px 35px;
 border:none;
 border-radius:40px;
@@ -93,40 +91,7 @@ transition:0.4s;
 background:white;
 }
 
-/* IMAGE SECTION */
-.image-section{
-padding:80px 20px;
-text-align:center;
-background:#111;
-}
-
-.image-section h2{
-color:#ffd700;
-margin-bottom:40px;
-font-size:32px;
-}
-
-.image-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:25px;
-max-width:1200px;
-margin:auto;
-}
-
-.image-grid img{
-width:100%;
-height:280px;
-object-fit:cover;
-border-radius:15px;
-transition:0.4s;
-}
-
-.image-grid img:hover{
-transform:scale(1.05);
-}
-
-/* GLASS SECTION */
+/* SECTION STYLING */
 .section{
 padding:80px 20px;
 display:flex;
@@ -136,7 +101,7 @@ background:#0f0f0f;
 
 .card{
 background:rgba(255,255,255,0.05);
-backdrop-filter:blur(10px);
+backdrop-filter:blur(8px);
 padding:40px;
 border-radius:20px;
 max-width:1100px;
@@ -152,10 +117,10 @@ text-align:center;
 
 .card ul{
 line-height:1.8;
-font-size:17px;
+font-size:16px;
 }
 
-/* LOCATION */
+/* LOCATION GRID */
 .location-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
@@ -171,7 +136,7 @@ transition:0.4s;
 }
 
 .loc-box:hover{
-transform:translateY(-10px);
+transform:translateY(-8px);
 background:rgba(255,215,0,0.18);
 }
 
@@ -184,7 +149,7 @@ margin-bottom:15px;
 .sitemap img{
 width:100%;
 border-radius:15px;
-box-shadow:0 0 30px rgba(255,215,0,0.2);
+box-shadow:0 0 25px rgba(255,215,0,0.2);
 }
 
 /* PRICE */
@@ -196,13 +161,13 @@ padding:70px 20px;
 }
 
 .price h2{
-font-size:36px;
+font-size:34px;
 margin-bottom:20px;
 }
 
 .price p{
-font-size:20px;
-margin:10px 0;
+font-size:18px;
+margin:8px 0;
 font-weight:600;
 }
 
@@ -236,9 +201,12 @@ z-index:5;
 }
 
 @media(max-width:768px){
-.hero h1{font-size:34px}
-.hero p{font-size:16px}
-.image-grid img{height:200px}
+.hero video{
+height:100vh;
+width:auto;
+}
+.hero h1{font-size:32px}
+.hero p{font-size:15px}
 .card{padding:25px}
 }
 </style>
@@ -247,7 +215,7 @@ z-index:5;
 <body>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" id="heroSection">
 
 <video id="bgVideo" autoplay muted loop playsinline preload="auto">
 <source src="background.mp4" type="video/mp4">
@@ -263,16 +231,6 @@ z-index:5;
 
 </section>
 
-<!-- PROJECT IMAGES -->
-<section class="image-section">
-<h2>🏡 Project View</h2>
-<div class="image-grid">
-<img src="image1.jpg">
-<img src="image2.jpg">
-<img src="image3.jpg">
-</div>
-</section>
-
 <!-- AMENITIES -->
 <section class="section">
 <div class="card">
@@ -286,31 +244,72 @@ z-index:5;
 <li>Overhead Water Tank</li>
 <li>Street Lights & EB Poles Installed</li>
 <li>Immediate EB Connection</li>
-<li>Green Landscaping with Trees</li>
+<li>Green Landscaping with Trees & Plants</li>
 </ul>
 </div>
 </section>
 
-<!-- WHATSAPP -->
+<!-- LOCATION -->
+<section class="section">
+<div class="card">
+<h2>📍 Prime Location Advantages</h2>
+<div class="location-grid">
+<div class="loc-box">
+<h3>🎓 Educational Institutions</h3>
+<p>Craya International, Ramakrishna Group, Kumaraguru Institutions, SNS Group & more nearby.</p>
+</div>
+<div class="loc-box">
+<h3>🏥 Banks & Hospitals</h3>
+<p>Leading banks, hospitals & supermarkets within close proximity.</p>
+</div>
+<div class="loc-box">
+<h3>🏭 Industrial Hubs</h3>
+<p>LMW, Roots, Texmo, Aquasub, Elgi, Sakthi Auto & more nearby.</p>
+</div>
+<div class="loc-box">
+<h3>💻 IT Parks</h3>
+<p>KGISL Tech Park, KCP Tech Park, TCS, Bosch, Ford & more nearby.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SITE MAP -->
+<section class="section">
+<div class="card sitemap">
+<h2>🗺 Site Layout Plan</h2>
+<img src="sitemap.jpg" alt="Site Map">
+</div>
+</section>
+
+<!-- PRICE -->
+<section class="price">
+<h2>🔥 Special Launch Price</h2>
+<p>South Facing – ₹11,49,999 / Cent</p>
+<p>North & East Facing – ₹11,99,999 / Cent</p>
+<p>Limited Sites Only – Book Now</p>
+</section>
+
 <a href="https://wa.me/919148127587" class="whatsapp">💬</a>
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
 const video = document.getElementById("bgVideo");
-const hero = document.querySelector(".hero");
+const hero = document.getElementById("heroSection");
 
+/* Smart Scroll Detection */
+const observer = new IntersectionObserver(entries => {
+entries.forEach(entry => {
+if(entry.isIntersecting){
 video.play().catch(()=>{});
-
-/* Pause video when scrolling down */
-window.addEventListener("scroll", function() {
-const rect = hero.getBoundingClientRect();
-if(rect.bottom < window.innerHeight / 2){
-video.pause();
 } else {
-video.play().catch(()=>{});
+video.pause();
 }
 });
+}, { threshold: 0.6 });
+
+observer.observe(hero);
 
 });
 
