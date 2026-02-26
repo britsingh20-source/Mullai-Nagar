@@ -18,8 +18,8 @@ box-sizing:border-box;
 body{
 font-family:'Poppins',sans-serif;
 color:white;
-overflow-x:hidden;
 background:black;
+overflow-x:hidden;
 }
 
 /* Background Video */
@@ -33,7 +33,7 @@ object-fit:cover;
 z-index:-2;
 }
 
-/* Dark Luxury Overlay */
+/* Dark Overlay */
 .overlay{
 position:fixed;
 top:0;
@@ -57,20 +57,37 @@ padding:20px;
 
 .hero h1{
 font-family:'Playfair Display',serif;
-font-size:60px;
+font-size:58px;
 color:#ffd700;
 animation:fadeIn 2s ease-in-out;
 }
 
 .hero p{
 margin-top:15px;
-font-size:22px;
+font-size:20px;
 max-width:800px;
 line-height:1.6;
 animation:fadeIn 3s ease-in-out;
 }
 
-/* Glass Card */
+.btn{
+margin-top:30px;
+padding:15px 35px;
+border:none;
+border-radius:40px;
+font-size:18px;
+font-weight:600;
+cursor:pointer;
+background:#ffd700;
+color:black;
+transition:0.4s;
+}
+
+.btn:hover{
+background:white;
+}
+
+/* Section */
 .section{
 padding:80px 20px;
 display:flex;
@@ -82,19 +99,46 @@ background:rgba(255,255,255,0.08);
 backdrop-filter:blur(15px);
 padding:40px;
 border-radius:20px;
-max-width:1000px;
+max-width:1100px;
 width:100%;
 box-shadow:0 0 40px rgba(255,215,0,0.15);
 }
 
 .card h2{
 color:#ffd700;
-margin-bottom:20px;
+margin-bottom:25px;
 font-size:32px;
+text-align:center;
 }
 
 .card ul{
 line-height:1.8;
+font-size:17px;
+}
+
+/* Location Grid */
+.location-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+margin-top:30px;
+}
+
+.loc-box{
+background:rgba(255,215,0,0.08);
+padding:25px;
+border-radius:15px;
+transition:0.4s;
+}
+
+.loc-box:hover{
+transform:translateY(-10px);
+background:rgba(255,215,0,0.18);
+}
+
+.loc-box h3{
+color:#ffd700;
+margin-bottom:15px;
 }
 
 /* Price Section */
@@ -102,7 +146,7 @@ line-height:1.8;
 text-align:center;
 background:linear-gradient(45deg,#b8860b,#ffd700);
 color:black;
-padding:60px 20px;
+padding:70px 20px;
 }
 
 .price h2{
@@ -116,26 +160,7 @@ margin:10px 0;
 font-weight:600;
 }
 
-/* Buttons */
-.btn{
-margin-top:25px;
-padding:15px 35px;
-border:none;
-border-radius:40px;
-font-size:18px;
-font-weight:600;
-cursor:pointer;
-background:black;
-color:#ffd700;
-transition:0.4s;
-}
-
-.btn:hover{
-background:white;
-color:black;
-}
-
-/* WhatsApp Button */
+/* WhatsApp */
 .whatsapp{
 position:fixed;
 bottom:20px;
@@ -160,6 +185,7 @@ padding:10px 18px;
 border-radius:30px;
 font-weight:600;
 cursor:pointer;
+z-index:10;
 }
 
 /* Animation */
@@ -179,6 +205,7 @@ to{opacity:1;transform:translateY(0)}
 
 <body>
 
+<!-- Background Video -->
 <video autoplay muted loop id="bgVideo">
 <source src="background.mp4" type="video/mp4">
 </video>
@@ -187,12 +214,17 @@ to{opacity:1;transform:translateY(0)}
 
 <button class="mute-btn" onclick="toggleSound()">Unmute 🔊</button>
 
+<!-- Hero Section -->
 <section class="hero">
 <h1>முல்லை நகர் – IDIKARAI</h1>
-<p>10 Acres | DTCP & RERA Approved Premium Gated Community with Modern Infrastructure</p>
+<p>
+10 Acres Premium Gated Community | DTCP & RERA Approved |
+Modern Infrastructure with Complete Amenities
+</p>
 <button class="btn">Book Your Site Now</button>
 </section>
 
+<!-- Project Highlights -->
 <section class="section">
 <div class="card">
 <h2>🏡 Project Highlights</h2>
@@ -200,28 +232,83 @@ to{opacity:1;transform:translateY(0)}
 <li>Phase 1 – 45 Sites</li>
 <li>Phase 2 – 120 Sites</li>
 <li>Phase 3 – 105 Sites</li>
-<li>40 & 33 Ft End-to-End Tar Roads</li>
-<li>Drinking Water & Bore Water</li>
-<li>Immediate EB Connection</li>
-<li>Street Lights & Landscaping</li>
+<li>40 & 33 Feet End-to-End Tar Roads</li>
+<li>Gated Community with Grand Entrance Arch</li>
+<li>Drinking Water & Bore Water Facility</li>
+<li>Overhead Water Tank</li>
+<li>Street Lights & EB Poles</li>
+<li>Immediate EB Connection for Houses</li>
+<li>Beautiful Landscaping & Tree Plantation</li>
 </ul>
 </div>
 </section>
 
+<!-- Location Advantages -->
+<section class="section">
+<div class="card">
+<h2>📍 Prime Location Advantages</h2>
+
+<div class="location-grid">
+
+<div class="loc-box">
+<h3>🎓 Educational Institutions</h3>
+<p>
+Craya International, Ramakrishna Group, Govt High School, 
+Ranganathar Group, Asian College, Adithya International School, 
+Chetiniya International School, GKD Institutions, 
+Einstein Institutions, Euro Kids, Kumaraguru Institutions, 
+SNS Group & more.
+</p>
+</div>
+
+<div class="loc-box">
+<h3>🏥 Banks, Hospitals & Markets</h3>
+<p>
+Leading national banks, multi-speciality hospitals, 
+medical shops and supermarkets are located very close 
+for your daily convenience.
+</p>
+</div>
+
+<div class="loc-box">
+<h3>🏭 Industrial Hubs</h3>
+<p>
+LMW, Indrola, Roots, Pricol, Veejay Lakshmi, 
+Sakthi Auto, Elgi, KG Groups, Texmo, Aquasub, 
+KSB Pumps and many other major industries nearby.
+</p>
+</div>
+
+<div class="loc-box">
+<h3>💻 IT & Corporate Parks</h3>
+<p>
+KGISL Tech Park, KCP Tech Park, Bosch, Ugam, 
+TCS, Ford and other multinational IT companies 
+within easy reach.
+</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- Price Section -->
 <section class="price">
 <h2>🔥 Special Launch Price</h2>
 <p>South Facing – ₹11,49,999 / Cent</p>
 <p>North & East Facing – ₹11,99,999 / Cent</p>
-<p>Hurry! Limited Sites Available</p>
+<p>HURRY! LIMITED SITES ONLY</p>
 <button class="btn">Call Now</button>
 </section>
 
+<!-- WhatsApp -->
 <a href="https://wa.me/919000000000" class="whatsapp">💬</a>
 
 <script>
 function toggleSound(){
 var video=document.getElementById("bgVideo");
 var btn=document.querySelector(".mute-btn");
+
 if(video.muted){
 video.muted=false;
 btn.innerHTML="Mute 🔇";
